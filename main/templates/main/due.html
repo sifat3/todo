@@ -1,0 +1,32 @@
+{% extends 'main/main.html' %}
+
+{% block content %}
+<div class="container">
+    <br><br>
+    <h1>Due Tasks:</h1>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Task Name</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Address</th>
+                <th scope="col">Change Status?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{task.name}}</td>
+                <td>{{task.customer_name}}</td>
+                <td>{{task.phone_number}}</td>
+                <td>{{task.address}}</td>
+                <td><a class="btn btn-success" href="{% url 'change' task.id %}">Complete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
